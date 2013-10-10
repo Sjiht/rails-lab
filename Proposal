@@ -22,7 +22,7 @@ Frameworks, languages, libraries etc.
 * SQLite wordt gebruikt om de courses op te slaan en op te vragen
 * Gebruikers hoeven niet in te loggen of te registreren
 * We gebruiken GitHub voor versie controle
-![Bilby Stampede](https://lh6.googleusercontent.com/dnMf9_zHP4-ODfeZ2rzKdyYU3W1NVl8RN0CST6AsXDy1Flb2wEj9AJkyusiU_v6n6VKd4CTlMGcecg_i1JqDC0-fI4AEOgkbYarkLjUcvPWG6xGZZMg9f-8)
+![Bla](https://lh6.googleusercontent.com/dnMf9_zHP4-ODfeZ2rzKdyYU3W1NVl8RN0CST6AsXDy1Flb2wEj9AJkyusiU_v6n6VKd4CTlMGcecg_i1JqDC0-fI4AEOgkbYarkLjUcvPWG6xGZZMg9f-8)
 
 
 Het omschrijven van Courses.xml naar SQL doen we samen, want dit is essentieel voor de rest van de website en moet goed gebeuren. Bij het schrijven van de back-end (in Ruby) gaan we ieder met een ander onderdeel aan de slag. Zo kan Thijs bijvoorbeeld werken aan de Recent bekeken of de pagina van een specifiek vak, terwijl Patrick bezig is met de lijsten. Het schrijven van de Front-end doen we weer grotendeels samen, al kan het zo zijn dat een van ons met jQuery bezig is en de ander met de rest.
