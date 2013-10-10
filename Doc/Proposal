@@ -24,7 +24,7 @@ Frameworks, languages, libraries etc.
 * We gebruiken GitHub voor versie controle
 
 Een screenshot van de mockup:
-https://github.com/Sjiht/rails-lab/doc/img/Screen Shot 2013-10-10 at 13.33.14.png
+https://github.com/Sjiht/rails-lab/tree/master/Doc/img/Screen Shot 2013-10-10 at 13.33.14.png
 
 Het omschrijven van Courses.xml naar SQL doen we samen, want dit is essentieel voor de rest van de website en 
 moet goed gebeuren. Bij het schrijven van de back-end (in Ruby) gaan we ieder met een ander onderdeel aan de slag. 
