@@ -1,0 +1,35 @@
+<%= render 'layouts/header'%>
+<input id="searchInput2" value="Filteren">
+<table data-role="table" id="table-custom-2" data-mode="column" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-popup-theme="a">
+	<thead>
+		<tr class="ui-bar-d">
+			<th>VakID</th>
+			<th>Vaknaam</th>
+			<th>Periode</th>
+			<th>ECTS</th>
+			<th>Instituut</th>
+			<th>Beschrijving</th>
+			<th>Leerdoelen</th>
+			<th>Examinatie</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody id="fbody">
+		<% @all.each do |item| %>
+			<tr class="href" onmouseover="this.bgColor='#C9FBFF'" onmouseout="this.bgColor=''">
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.vakID %></td>
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.vaknaam %></td>
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.periode %></td>
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.ects %></td>
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.instituut %></td>
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.beschrijving %></td>
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.leerdoelen %></td>
+				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.examinatie %></td>
+				<td width="10px"><a href="/saved/add/<%= item.vaknaam %>"><img src="http://download.pdkwebs.nl/download/images/save.png" width="30px" /></a></td>
+				<td width="10px"><a href="/favorite/add/<%= item.vaknaam %>"><img src="http://download.pdkwebs.nl/download/images/favorite.png" width="30px" /></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= render 'layouts/footer'%>

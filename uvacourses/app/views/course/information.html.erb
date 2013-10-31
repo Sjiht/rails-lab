@@ -1,0 +1,62 @@
+<%= render 'layouts/header'%>
+
+<table>
+	<tr>
+		<th>
+			Vaknaam
+		</th>
+		<td>
+			<%= params[:vaknaam] %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Beschrijving
+		</th>
+		<td>
+			<%= @information[0].beschrijving %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Periode
+		</th>
+		<td>
+			<%= @information[0].periode %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			ECTS
+		</th>
+		<td>
+			<%= @information[0].ects %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Docenten
+		</th>
+		<td>
+			
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Leerdoelen
+		</th>
+		<td>
+			<%= @information[0].leerdoelen %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Instituut
+		</th>
+		<td>
+			<%= @information[0].instituut %>
+		</td>
+	</tr>
+</table>
+
+<%= render 'layouts/footer'%>
