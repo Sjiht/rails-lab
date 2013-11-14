@@ -1,16 +1,14 @@
 <%= render 'layouts/header'%>
 
-<%= @test %>
-
 <select onchange="location = this.options[this.selectedIndex].value;">
 	<option value="/course/list/all" <%= @all %>>All</option>
 	<% 		
 	@institutes.each do |item| 
 	%>
-		<option value="/course/list/<%= item.instituut %>"<%=
-		if params[:instituut] == item.instituut
+		<option value="/course/list/<%= item.id %>"<%=
+		if params[:instituut] == item.id
 			' SELECTED'
-		end %>><%= item.instituut %></option>
+		end %>><%= item.faculteitnaam %></option>
 	<% end %>
 </select>
 
@@ -18,31 +16,21 @@
 <table data-role="table" id="table-custom-2" data-mode="column" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-popup-theme="a">
 	<thead>
 		<tr class="ui-bar-d">
-			<th>VakID</th>
 			<th>Vaknaam</th>
 			<th>Periode</th>
 			<th>ECTS</th>
-			<th>Instituut</th>
-			<th>Beschrijving</th>
-			<th>Leerdoelen</th>
-			<th>Examinatie</th>
 			<th>&nbsp;</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody id="fbody">
 		<% @courses.each do |item| %>
-			<tr class="href" onmouseover="this.bgColor='#C9FBFF'" onmouseout="this.bgColor=''">
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.vakID %></td>
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.vaknaam %></td>
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.periode %></td>
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.ects %></td>
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.instituut %></td>
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.beschrijving %></td>
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.leerdoelen %></td>
-				<td onclick="document.location = '/course/information/<%= item.vaknaam %>';"><%= item.examinatie %></td>
-				<td width="10px"><a href="/saved/add/<%= item.vaknaam %>"><img src="http://download.pdkwebs.nl/download/images/save.png" width="30px" /></a></td>
-				<td width="10px"><a href="/favorite/add/<%= item.vaknaam %>"><img src="http://download.pdkwebs.nl/download/images/favorite.png" width="30px" /></td>
+			<tr onmouseover="this.bgColor='#C9FBFF'" onmouseout="this.bgColor=''">
+				<td class="clickableRow" href="/course/information/<%= item.id %>"><%= CGI.unescapeHTML(item.vaknaam) %></td>
+				<td class="clickableRow" href="/course/information/<%= item.id %>"><%= item.periode %></td>
+				<td class="clickableRow" href="/course/information/<%= item.id %>"><%= item.ects %></td>
+				<td width="10px"><a href="/saved/add/<%= item.id %>"><img src="/assets/images/save.png" width="30px" /></td>
+				<td width="10px"><a href="/favorite/add/<%= item.id %>"><img src="/assets/images/favorite.png" width="30px" /></td>
 			</tr>
 		<% end %>
 	</tbody>

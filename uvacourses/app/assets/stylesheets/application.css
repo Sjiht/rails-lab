@@ -11,6 +11,6 @@
  *= require_self
  *= require_tree .
 */
-tr.href {
+td.clickableRow {
 	cursor: pointer;
 }

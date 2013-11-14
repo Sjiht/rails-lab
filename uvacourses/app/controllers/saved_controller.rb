@@ -1,19 +1,30 @@
 class SavedController < ActionController::Base
   def index 
     list
-    cookie
   end
+ 
   def list
-    #@cookie = selecteer alles waar aapje = saved.cookieID
-    @cookie = Saved.where(:cookieID => 'aapje')
-    @all = Saved.find_by_sql("SELECT * FROM Saveds, Courses WHERE Saveds.cookieID = '2' AND Courses.vakID == Saveds.vakID")
-    #@vak = selecteer je alles saved.vakID = course.vakID
-    #saved = Saved.new(:vakID => 3, :cookieID => '3' )
-    #saved.save
+
+    if cookies.permanent[:unique].blank?
+      o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+      string = (0...50).map{ o[rand(o.length)] }.join
+      cookies.permanent[:unique] = string
+    end
+    
+    @saved = Saved.find_by_sql("SELECT * FROM Saveds, Courses WHERE Saveds.cookieID = '#{cookies[:unique]}' AND Courses.id == Saveds.vakID")
+    
+
+  end  
+  
+  def add
+      saved = Saved.find_or_create_by_cookieID_and_vakID(:cookieID => cookies[:unique], :vakID => params[:vakID])
+      saved.save
+      redirect_to '/course/list'
   end
   
-  def cookie
-    #cookies.permanent[:github_username] = 'neerajdotname'
-    #session[:my_key] = 'my value'
+  def delete
+    delete = Saved.where(:cookieID => cookies[:unique], :vakID => params[:vakID]).destroy_all
+    redirect_to '/saved/list'
   end
+  
 end

@@ -11,23 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031103201) do
+ActiveRecord::Schema.define(version: 20131108122603) do
 
   create_table "courses", force: true do |t|
-    t.integer  "vakID"
     t.string   "vaknaam"
-    t.string   "instituut"
     t.string   "periode"
     t.string   "beschrijving"
     t.string   "leerdoelen"
     t.string   "examinatie"
     t.integer  "ects"
+    t.integer  "faculteitID"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "saveds", force: true do |t|
+  create_table "docentens", force: true do |t|
     t.integer  "vakID"
+    t.string   "docentNaam"
+    t.string   "docentURL"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "faculteitens", force: true do |t|
+    t.string   "faculteitnaam"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", force: true do |t|
+    t.integer  "vakID"
+    t.string   "cookieID"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recents", force: true do |t|
+    t.integer "vakID"
+    t.string  "cookieID"
+    t.string  "timestamp"
+  end
+
+  create_table "saveds", force: true do |t|
+    t.string   "vakID"
     t.string   "cookieID"
     t.datetime "created_at"
     t.datetime "updated_at"

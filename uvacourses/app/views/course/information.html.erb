@@ -6,7 +6,7 @@
 			Vaknaam
 		</th>
 		<td>
-			<%= params[:vaknaam] %>
+			<%= @information[0].vaknaam.html_safe %>
 		</td>
 	</tr>
 	<tr>
@@ -14,7 +14,7 @@
 			Beschrijving
 		</th>
 		<td>
-			<%= @information[0].beschrijving %>
+			<%= @information[0].beschrijving.html_safe %>
 		</td>
 	</tr>
 	<tr>
@@ -22,7 +22,7 @@
 			Periode
 		</th>
 		<td>
-			<%= @information[0].periode %>
+			<%= @information[0].periode.html_safe %>
 		</td>
 	</tr>
 	<tr>
@@ -38,7 +38,13 @@
 			Docenten
 		</th>
 		<td>
-			
+		<% 		
+		@docenten.each do |item| 
+		%>
+			<a href="<%= item.docentURL %>"><%= item.docentNaam %></a><br />
+		<%
+		end
+		%>
 		</td>
 	</tr>
 	<tr>
@@ -46,15 +52,7 @@
 			Leerdoelen
 		</th>
 		<td>
-			<%= @information[0].leerdoelen %>
-		</td>
-	</tr>
-	<tr>
-		<th>
-			Instituut
-		</th>
-		<td>
-			<%= @information[0].instituut %>
+			<%= @information[0].leerdoelen.html_safe %>
 		</td>
 	</tr>
 </table>

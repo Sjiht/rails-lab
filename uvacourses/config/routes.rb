@@ -12,9 +12,19 @@ Uvacourses::Application.routes.draw do
   get '/course/list/', to: 'course#index'
   get '/course/list/:instituut', to: 'course#list'
   get '/course/information/', to: 'course#index'
-  get '/course/information/:vaknaam', to: 'course#information'
+  get '/course/information/:vakID', to: 'course#information'
   
   get '/saved/list/', to: 'saved#list'
+  get '/saved/add/:vakID', to: 'saved#add'
+  get '/saved/delete/:vakID', to: 'saved#delete'
+  
+  get '/favorite/list/', to: 'favorite#list'
+  get '/favorite/add/:vakID', to: 'favorite#add'
+  get '/favorite/delete/:vakID', to: 'favorite#delete'
+  
+  get '/recent/list/', to: 'recent#list'
+  get '/recent/add/:vakID', to: 'recent#add'
+  get '/recent/delete/:vakID', to: 'recent#delete'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

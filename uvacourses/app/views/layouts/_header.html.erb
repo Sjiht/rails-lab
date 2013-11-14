@@ -48,12 +48,24 @@
 		});//]]>  
 		
 	</script>
+	
+
+	
+	<script>
+		jQuery('div').live('pagehide', function(event, ui){
+		  var page = jQuery(event.target);
+		
+		  if(page.attr('data-cache') == 'never'){
+		    page.remove();
+		  };
+		});
+	</script>
     
 </head>
 <body>
 	<div data-role="navbar" data-grid="c" data-theme="c" data-iconpos="left">
     <ul>
-        <li><a href="/" data-icon="home" <%=
+        <li><a href="/course/list/all" data-icon="home" <%=
 		if controller.controller_name == 'course'
 			'class="ui-btn-active"'.html_safe
 		end
@@ -63,12 +75,12 @@
 			'class="ui-btn-active"'.html_safe
 		end
 		%>>Opgeslagen</a></li>
-        <li><a href="#" data-icon="star" <%=
+        <li><a href="/favorite/list/" data-icon="star" <%=
 		if controller.controller_name == 'favorite'
 			'class="ui-btn-active"'.html_safe
 		end
 		%>>Favorieten</a></li>
-        <li><a href="#" data-icon="refresh" <%=
+        <li><a href="/recent/list/" data-icon="refresh" <%=
 		if controller.controller_name == 'recent'
 			'class="ui-btn-active"'.html_safe
 		end
@@ -76,3 +88,10 @@
         <li>
     </ul>
 </div>
+<script>
+	jQuery(document).ready(function($) {
+	      $(".clickableRow").click(function() {
+	            window.document.location = $(this).attr("href");
+	      });
+	});
+</script>
