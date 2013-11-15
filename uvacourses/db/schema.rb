@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20131108122603) do
     t.string   "leerdoelen"
     t.string   "examinatie"
     t.integer  "ects"
-    t.integer  "faculteitID"
+    t.string   "faculteitID"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

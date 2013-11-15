@@ -1,4 +1,6 @@
 class CourseController < ActionController::Base
+  require 'securerandom'
+
   def index
     redirect_to :action => 'list', :instituut => 'all'
   end
@@ -7,17 +9,14 @@ class CourseController < ActionController::Base
     if params[:instituut] == 'all'
       @courses = []
     else
-      @courses = Course.find_by_sql("SELECT * FROM Courses, Faculteitens WHERE Faculteitens.id = '#{params[:instituut]}' AND Courses.faculteitID = Faculteitens.id")
+      @courses = Course.where(:faculteitID => params[:instituut])
     end
+    
     @institutes = Faculteiten.all.order(:faculteitnaam)
     
-    
     if cookies.permanent[:unique].blank?
-      o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
-      string = (0...50).map{ o[rand(o.length)] }.join
-      cookies.permanent[:unique] = string
+      cookies.permanent[:unique] = SecureRandom.urlsafe_base64(20)
     end
-    
   end
   
   def information

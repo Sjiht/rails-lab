@@ -7,7 +7,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :leerdoelen
       t.string :examinatie
       t.integer :ects
-      t.integer :faculteitID
+      t.string :faculteitID
       t.timestamps
     end
   end

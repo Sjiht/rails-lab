@@ -1,14 +1,14 @@
 class FavoriteController < ActionController::Base
+  require 'securerandom'
   def index 
     list
   end
  
   def list
     if cookies.permanent[:unique].blank?
-      o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
-      string = (0...50).map{ o[rand(o.length)] }.join
-      cookies.permanent[:unique] = string
+      cookies.permanent[:unique] = SecureRandom.urlsafe_base64(20)
     end
+    
     @favorite = Favorite.find_by_sql("SELECT * FROM Favorites, Courses WHERE Favorites.cookieID = '#{cookies[:unique]}' AND Courses.id == Favorites.vakID")
   end  
   
