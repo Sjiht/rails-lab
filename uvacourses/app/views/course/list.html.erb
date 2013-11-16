@@ -1,16 +1,6 @@
 <%= render 'layouts/header'%>
 
-<select onchange="location = this.options[this.selectedIndex].value;">
-	<option value="/course/list/all" <%= @all %>>All</option>
-	<% 		
-	@institutes.each do |item| 
-	%>
-		<option value="/course/list/<%= item.id %>"<%=
-		if params[:instituut] == item.id
-			' SELECTED'
-		end %>><%= item.faculteitnaam %></option>
-	<% end %>
-</select>
+<%= collection_select(:faculteitnaam, :id, @institutes, :id, :faculteitnaam, options ={:prompt => "Selecteer een faculteit", :selected => params[:instituut]}, html_options = {:onchange => "location = this.options[this.selectedIndex].value"}) %>
 
 <input id="searchInput2" value="Filteren">
 <table data-role="table" id="table-custom-2" data-mode="column" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-popup-theme="a">
