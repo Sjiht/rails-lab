@@ -5,9 +5,6 @@ Uvacourses::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'course#index'
 
-  # Example of regular route:
-  # get 'information/course' => 'information#course'
-  # get '/information/course/:id', to: 'information#course', as: 'course'
   get '/course/', to: 'course#index'
   get '/course/list/', to: 'course#index'
   get '/course/list/:instituut', to: 'course#list'

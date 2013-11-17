@@ -6,25 +6,36 @@ class CourseController < ActionController::Base
   end
   
   def list
-    if params[:instituut] == 'all'
+    
+    # generate cookie if it doesn't exist, with 20 random characters
+    if cookies.permanent[:unique].blank?
+      cookies.permanent[:unique] = SecureRandom.urlsafe_base64(20)
+    end
+    
+    # if there is no institute selected display nothing
+    if params[:instituut] == ''
       @courses = []
+    # if there is an institute selected get all courses from that institute
     else
       @courses = Course.where(:faculteitID => params[:instituut])
     end
     
+    # get all institutes
     @institutes = Faculteiten.all.order(:faculteitnaam)
-    
-    if cookies.permanent[:unique].blank?
-      cookies.permanent[:unique] = SecureRandom.urlsafe_base64(20)
-    end
+
   end
   
   def information
     
+    # get all teachers for the selected course
     @docenten = Docenten.where(:vakID => params[:vakID])
+    
+    # get the information for the selected course
     @information = Course.find_by_sql("SELECT * FROM Courses WHERE id = '#{params[:vakID]}'")
     
+    # when viewing a course, check if it already is present in recent and delete it
     recent = Recent.where(:cookieID => cookies[:unique], :vakID => params[:vakID]).destroy_all
+    # insert the course in recent
     recent = Recent.create(:cookieID => cookies[:unique], :vakID => params[:vakID], :timestamp => DateTime.now)
     recent.save
     

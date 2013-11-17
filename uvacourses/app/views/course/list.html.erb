@@ -1,6 +1,9 @@
 <%= render 'layouts/header'%>
 
-<%= collection_select(:faculteitnaam, :id, @institutes, :id, :faculteitnaam, options ={:prompt => "Selecteer een faculteit", :selected => params[:instituut]}, html_options = {:onchange => "location = this.options[this.selectedIndex].value"}) %>
+
+<%= #make a selected box of all faculties
+	collection_select(:faculteitnaam, :id, @institutes, :id, :faculteitnaam, options ={:prompt => "Selecteer een faculteit", :selected => params[:instituut]}, html_options = {:onchange => "location = this.options[this.selectedIndex].value"})
+	%>
 
 <input id="searchInput2" value="Filteren">
 <table data-role="table" id="table-custom-2" data-mode="column" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-popup-theme="a">
