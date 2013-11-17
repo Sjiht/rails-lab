@@ -13,8 +13,13 @@ class CourseController < ActionController::Base
     end
     
     # if there is no institute selected display nothing
-    if params[:instituut] == ''
+    if params[:instituut] == 'all'
       @courses = []
+      
+      # add instructions if a user has no faculty selected
+      @message = 'Kies hierboven uit een lijst van faculteiten om een lijst van vakken te krijgen. 
+                  Deze vakken kunnen vervolgens opgeslagen worden, en in favorieten geplaatst worden. 
+                  Om meer informatie te krijgen over een vak kan op een vak geklikt worden.'
     # if there is an institute selected get all courses from that institute
     else
       @courses = Course.where(:faculteitID => params[:instituut])
