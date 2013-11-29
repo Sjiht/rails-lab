@@ -18,7 +18,7 @@ Thijs van der Velden\
 ### Mockups\
 \
 ## Home (search & login)\
-![Alt text](/blob/master/doc/img/mockup_mobile_1.png)\
+![Alt text](http://images2.fanpop.com/image/photos/9500000/sdfasdf-michael-jackson-9587475-600-300.jpg)\
 \
 ## Game information\
 Mobile:\
