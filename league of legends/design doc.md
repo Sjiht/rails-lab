@@ -18,7 +18,7 @@ Thijs van der Velden\
 ### Mockups\
 \
 ## Home (search & login)\
-![Alt text](/doc/img/mockup_mobile_1.png)\
+![Alt text](/blob/master/doc/img/mockup_mobile_1.png)\
 \
 ## Game information\
 Mobile:\
