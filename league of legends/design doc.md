@@ -42,31 +42,29 @@ Data-controller
 * Masteries($summonerID)
 * Honor($summonerID
 
-Inlog-controller\
+Inlog-controller
 
-Login($emailAdress, $password)\
-\
-Registratie-controller\
-Save($summonerName, $emailAdress, $password)\
-\
-Jungle-controler\
-\
-\
-\
-### Models\
-Account-model\
-ChampionData-model\
-\
-### Views\
-Home\
-Game\
-Registreren\
-Jungle Timers\
-\
-\
-\
-### Database fields\
-\
+* Login($emailAdress, $password)
+
+Registratie-controller
+* Save($summonerName, $emailAdress, $password)\
+
+Jungle-controller
+
+
+### Models
+
+* Account-model
+* ChampionData-model\
+
+### Views
+Home
+Game
+Registreren
+Jungle Timers
+
+### Database fields
+
 Tabel \'91accounts\'92\
 - id\
 - summonerName STRING\
