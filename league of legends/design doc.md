@@ -18,32 +18,29 @@ Thijs van der Velden
 
 ## Game information
 
-Mobile:\
-![Alt text](/doc/img/mockup_mobile_2.png)\
-\
+Mobile:
+![Alt text](/doc/img/mockup_mobile_2.png)
+
 Desktop:\
-![Alt text](/doc/img/mockup_normal_2.png)\
-\
-## Jungle Timer\
-![Alt text](/doc/img/mockup_mobile_3.png)\
-\
-## Models, views and controllers\
-\
-Controllers\
-Home-controller\
-GetSummonerData($summonerName)\
-\
-Data-controller\
+![Alt text](/doc/img/mockup_normal_2.png)
 
-RecentGames($summonerID)\
+## Jungle Timer
+![Alt text](/doc/img/mockup_mobile_3.png)
 
-Runepage($summonerID)\
+## Models, views and controllers
 
-ActiveGameInfo($summonerID)\
+Controllers
+Home-controller
 
-Masteries($summonerID)\
+* GetSummonerData($summonerName)
 
-Honor($summonerID\
+Data-controller
+
+* RecentGames($summonerID)
+* Runepage($summonerID)
+* ActiveGameInfo($summonerID)
+* Masteries($summonerID)
+* Honor($summonerID
 
 Inlog-controller\
 
