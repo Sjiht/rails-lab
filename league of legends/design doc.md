@@ -19,9 +19,13 @@ Thijs van der Velden
 ### Game information
 
 Mobile:
+
+
 ![Alt text](http://download.pdkwebs.nl/download/images/IK/MPROG/mockup_mobile_2.png)
 
 Desktop:
+
+
 ![Alt text](http://download.pdkwebs.nl/download/images/IK/MPROG/mockup_normal_2.png)
 
 ### Jungle Timer
