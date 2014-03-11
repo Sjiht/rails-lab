@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vakID: 
+  vaknaam: MyString
+  instituut: MyString
+
+two:
+  vakID: 
+  vaknaam: MyString
+  instituut: MyString

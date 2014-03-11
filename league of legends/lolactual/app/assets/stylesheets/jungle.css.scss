@@ -1,0 +1,25 @@
+// Place all the styles related to the jungle controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  padding:0px;
+  margin:0px;
+}
+.timer {
+  background-color:grey;
+  height:19%;
+  width:42%;
+  float:left;
+  font-size:200%;
+  padding:1% 2% 1% 2%;
+  margin:2%;
+  border-radius:25px;
+}
+.blue {
+  font-size:25px;
+  color:blue;
+}
+.red {
+  font-size:25px;
+  color:red;
+}
