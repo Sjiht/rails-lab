@@ -1,0 +1,76 @@
+Design Doc
+Patrick de Koning
+Thijs van der Velden
+
+Mockup
+De mockups voor de mobiele versie en de desktop-versie komen overeen, omdat we rekening hebben gehouden met de beschikbare ruimte.
+
+
+
+Models, views and controllers
+Controllers
+Home-controller
+	Home -> Inloggen (met facebook)
+
+Tasks-controller
+	Tasks -> Nieuwe taak aanmaken ()
+	Tasks -> Mappen laten zien ($facebookID)
+	Tasks -> Taken laten zien ($facebookID)
+
+SingleTask-controller
+	SingleTask -> Taken per persoon laten zien ($taskID, $facebookID)
+	SingleTask -> Taken aan personen toevoegen ($taskID, $facebookID)
+
+Preferences-controller
+	SingleTask -> Titel veranderen ($titel, $taskID, $facebookID)
+	SingleTask -> Gebruiker toevoegen aan taak ($taskID, $gebruikers, $facebookID)
+
+Models
+Home-model
+Inloggen
+
+Tasks-model
+	Taak aanmaken
+	Mappen laten zien
+	Taken laten zien
+	
+SingleTask-model
+	Taken per persoon laten zien
+	Taken aan personen toevoegen
+	Laten zien of de taak al gedaan is
+
+Preferences-model
+	Gebruikers toevoegen aan takenmap
+
+Views
+Home
+Tasks
+SingleTask
+Preferences
+Header
+Footer
+Database fields
+
+Table ‘users’
+- facebookID			INT(25)
+- firstName			String(255)
+- lastName			String(255)
+- profilePicture			VARCHAR(255)
+- 
+
+Table ‘taskDirectories’
+- directoryID			INT(10)
+- facebookID			INT(25)
+- directoryName		String(255)
+
+Table ‘taskDirectoryUsers’
+- facebookID			INT(25)
+- directoryID			INT(10)
+
+Table ‘tasks’
+- taskID			INT(10)
+- taskName			String(255)
+- directoryID			INT(10)
+- taskDate			INT(15)
+- taskContent			VARCHAR(max)
+- taskCompleted		INT(1)
