@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  taskName: MyString
+  directoryID: 1
+  taskDate: 1
+  taskContent: MyText
+  taskCompleted: 1
+
+two:
+  taskName: MyString
+  directoryID: 1
+  taskDate: 1
+  taskContent: MyText
+  taskCompleted: 1

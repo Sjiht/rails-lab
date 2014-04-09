@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Text</th>
+	</tr>
+	<tr>
+		<td>
+			<%= link_to "Wijzig taak", :controller => 'tasks', :action => 'edit', :id => params[:id] %>
+		</td>
+	</tr>
+	<% @tasks.where(:id => params[:id]).each do |task| %>
+		<tr>
+			<td><%= task.taskName %></td>
+			<td><%= task.taskContent %></td>
+		</tr>
+	<% end %>
+</table>

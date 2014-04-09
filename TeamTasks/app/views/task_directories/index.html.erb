@@ -1,0 +1,22 @@
+<h1>Listing posts</h1>
+<%= link_to "Nieuwe directory", action: "new" %>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Text</th>
+	</tr>
+  
+	<% @directories.each do |d| %>
+			<tr>
+				<td><%= d.directoryName %></td> 
+				<td><%= link_to "Nieuwe taak", :controller => 'tasks', :action => 'new', :id => d.id %></td>
+			</tr>
+		<% @tasks.where(:directoryID => d.id).each do |t| %>
+			<tr>
+				<td><%= link_to t.taskName, :controller => 'tasks', :action => 'show', :id => t.id %></td>
+				<td><%= %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>

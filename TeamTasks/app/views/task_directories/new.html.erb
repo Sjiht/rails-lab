@@ -1,0 +1,17 @@
+<h1>New Directory</h1>
+
+<%= form_for :taskDirectory, url: task_directories_path do |f| %>
+	<p>
+		<%= f.label :facebookID %><br />
+		<%= f.text_field :facebookID %>
+	</p>
+	
+	<p>
+		<%= f.label :directoryName %><br />
+		<%= f.text_field :directoryName %>
+	</p>
+	
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

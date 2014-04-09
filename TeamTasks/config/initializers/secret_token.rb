@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Uvacourses::Application.config.secret_key_base = 'd5cb8e910a095469e065e1a6685c55779be2b35c63da68c4da8a9b660ee7a6834175350b51194528e0483d464f79e157e21fee41dd6391905d879b48676859f0'
+TeamTasks::Application.config.secret_key_base = '27553a43705cf0ac3049e49966970cbfa327e4d71ea099600fb36bfdba73b61647075571d8ac40ae667297e0f8e4609f16a1332a90f7c2a494783d4eba837e9f'

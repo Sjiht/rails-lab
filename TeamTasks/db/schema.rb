@@ -11,50 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108122603) do
+ActiveRecord::Schema.define(version: 20140408103355) do
 
-  create_table "courses", force: true do |t|
-    t.string   "vaknaam"
-    t.string   "periode"
-    t.string   "beschrijving"
-    t.string   "leerdoelen"
-    t.string   "examinatie"
-    t.integer  "ects"
-    t.string   "faculteitID"
+  create_table "task_directories", force: true do |t|
+    t.integer  "facebookID"
+    t.string   "directoryName"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "docentens", force: true do |t|
-    t.integer  "vakID"
-    t.string   "docentNaam"
-    t.string   "docentURL"
+  create_table "task_directory_users", force: true do |t|
+    t.integer  "facebookID"
+    t.integer  "directoryID"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "faculteitens", force: true do |t|
-    t.string   "faculteitnaam"
+  create_table "tasks", force: true do |t|
+    t.string   "taskName"
+    t.integer  "directoryID"
+    t.integer  "taskDate"
+    t.text     "taskContent"
+    t.integer  "taskCompleted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "favorites", force: true do |t|
-    t.integer  "vakID"
-    t.string   "cookieID"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recents", force: true do |t|
-    t.integer "vakID"
-    t.string  "cookieID"
-    t.string  "timestamp"
-  end
-
-  create_table "saveds", force: true do |t|
-    t.string   "vakID"
-    t.string   "cookieID"
+  create_table "users", force: true do |t|
+    t.integer  "facebookID"
+    t.string   "firstName"
+    t.string   "lastName"
+    t.text     "profilePicture"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

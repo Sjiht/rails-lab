@@ -1,0 +1,27 @@
+<h1>New Post</h1>
+
+<%= form_for :task, url: tasks_path do |f| %>
+	<p>
+		<%= f.label :taskName %><br />
+		<%= f.text_field :taskName %>
+	</p>
+	
+	<p>
+		<%= f.label :taskDate %><br />
+		<%= f.text_field :taskDate %>
+	</p>
+	
+	<p>
+		<%= f.label :taskContent %><br />
+		<%= f.text_field :taskContent %>
+	</p>
+ 	
+ 	<p>
+		<%= f.label :taskCompleted %><br />
+		<%= f.text_field :taskCompleted %>
+	</p>
+	<p>
+		<%= f.hidden_field :directoryID, :value => params[:id] %>
+		<%= f.submit %>
+	</p>
+<% end %>
