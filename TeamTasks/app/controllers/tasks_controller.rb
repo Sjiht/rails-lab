@@ -16,11 +16,22 @@ class TasksController < ApplicationController
   end
   
   def edit
-    task = Task.where(:id => params[:id])
-    task.taskName = 'bla1'
-    task.taskContent = 'bla1 content'
-    task.taskCompleted = 1
-    task.save
+    #task = Task.where(:id => params[:id])
+    #task.taskName = 'bla1'
+    #task.taskContent = 'bla1 content'
+    #task.taskCompleted = 1
+    #task.save
+    @task = Task.find(params[:id])
+  end
+  
+  def update
+    @task = Task.find(params[:id])
+   
+    if @task.update(params[:task].permit(:taskName, :taskContent))
+      redirect_to @task
+    else
+      render 'edit'
+    end
   end
   
   private
