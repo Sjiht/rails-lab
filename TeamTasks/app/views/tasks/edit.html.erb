@@ -14,15 +14,24 @@
   <% end %>
   <p>
     <%= f.label :taskName %><br>
-    <%= f.text_field :taskName %>
+    <%= f.text_field :taskName, :size => 40 %>
   </p>
- 
+  
   <p>
     <%= f.label :taskContent %><br>
-    <%= f.text_area :taskContent %>
+    <%= f.text_area :taskContent, :cols => 70, :rows => 10 %>
   </p>
  
   <p>
+  	<%= label_tag(:taskCompleted, "Task completed") %>
+    <%= check_box("task", "taskCompleted") %>
+  </p>
+ 
+  <p>
+    <%= f.label 'Deadline' %><br>
+    <%= date_select("task", "taskDate", :order => [:day, :month, :year]) %>
+  </p>
+  
     <%= f.submit %>
   </p>
 <% end %>

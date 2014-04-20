@@ -1,13 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  facebookID: 1
-  firstName: MyString
-  lastName: MyString
-  profilePicture: MyText
+  name: MyString
 
 two:
-  facebookID: 1
-  firstName: MyString
-  lastName: MyString
-  profilePicture: MyText
+  name: MyString

@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408103355) do
+ActiveRecord::Schema.define(version: 20140420145901) do
+
+  create_table "authorizations", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "task_directories", force: true do |t|
-    t.integer  "facebookID"
+    t.integer  "userID"
     t.string   "directoryName"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -30,18 +38,15 @@ ActiveRecord::Schema.define(version: 20140408103355) do
   create_table "tasks", force: true do |t|
     t.string   "taskName"
     t.integer  "directoryID"
-    t.integer  "taskDate"
+    t.date     "taskDate"
     t.text     "taskContent"
-    t.integer  "taskCompleted"
+    t.boolean  "taskCompleted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.integer  "facebookID"
-    t.string   "firstName"
-    t.string   "lastName"
-    t.text     "profilePicture"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

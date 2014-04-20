@@ -1,21 +1,35 @@
 class TaskDirectoriesController < ApplicationController
   def index
-    @directories = TaskDirectory.all
-    @tasks = Task
+    if session[:user_id]
+      @directories = TaskDirectory.where(:userID => session[:user_id])
+      @tasks = Task
+    else
+      redirect_to '/auth/facebook'
+    end
   end
   
   def create
-    @directory = TaskDirectory.new(taskDirectory_params)
-    @directory.save
-    redirect_to :action => 'index'
+    if session[:user_id]
+      @directory = TaskDirectory.new(taskDirectory_params)
+      @directory.save
+      redirect_to :action => 'index'
+    else
+       redirect_to '/auth/facebook'
+    end
   end
-  
-  def show
-    @directory = TaskDirectory.find(params[:id])
+ 
+  def destroy
+    if session[:user_id]
+      @directory = TaskDirectory.find(params[:id])
+      @directory.destroy
+      redirect_to :action => 'index'
+    else
+      redirect_to '/auth/facebook'
+    end
   end
   
   private
     def taskDirectory_params
-      params.require(:taskDirectory).permit(:facebookID, :directoryName)
+      params.require(:taskDirectory).permit(:userID, :directoryName)
     end
 end

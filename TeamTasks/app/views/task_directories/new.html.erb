@@ -2,13 +2,12 @@
 
 <%= form_for :taskDirectory, url: task_directories_path do |f| %>
 	<p>
-		<%= f.label :facebookID %><br />
-		<%= f.text_field :facebookID %>
+		<%= f.hidden_field :userID, :value => session[:user_id] %>
 	</p>
 	
 	<p>
 		<%= f.label :directoryName %><br />
-		<%= f.text_field :directoryName %>
+		<%= f.text_field :directoryName, :size => 40 %>
 	</p>
 	
 	<p>

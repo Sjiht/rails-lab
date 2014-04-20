@@ -1,36 +1,62 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
-  end
-  
-  def create
-   
-    @task = Task.new(task_params)
-    @task.save
-    redirect_to :controller => 'task_directories', :action => 'index'
     
   end
   
+  def create
+    if session[:user_id]
+      @task = Task.new(task_params)
+      @task.save
+      redirect_to :controller => 'task_directories', :action => 'index'
+    else
+      redirect_to '/auth/facebook'
+    end
+  end
+  
   def show
-    @tasks = Task.all
+    if session[:user_id]
+      taskdirectoryID = Task.find(params[:id]).directoryID
+      directory = TaskDirectory.where(:id => taskdirectoryID).where(:userID => session[:user_id]).first
+      @task = Task.where(:directoryID => directory.id).first
+    else
+      redirect_to '/auth/facebook'
+    end
+    
+    #if @directory.directoryID == @taskid.directoryID
+    #  @tasks = Task.all
+    #else 
+    #  render :text => 'Niet ingelogd'
+    #end
   end
   
   def edit
-    #task = Task.where(:id => params[:id])
-    #task.taskName = 'bla1'
-    #task.taskContent = 'bla1 content'
-    #task.taskCompleted = 1
-    #task.save
-    @task = Task.find(params[:id])
+    if session[:user_id]
+      @task = Task.find(params[:id])
+    else
+      redirect_to '/auth/facebook'
+    end  
   end
   
   def update
-    @task = Task.find(params[:id])
-   
-    if @task.update(params[:task].permit(:taskName, :taskContent))
-      redirect_to @task
+    if session[:user_id]
+      @task = Task.find(params[:id])
+      if @task.update(params[:task].permit(:taskName, :taskContent, :taskDate, :taskCompleted))
+        redirect_to :controller => 'task_directories', :action => 'index'
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to '/auth/facebook'
+    end
+  end
+  
+  def destroy
+    if session[:user_id]
+      @task = Task.find(params[:id])
+      @task.destroy
+      redirect_to :controller => 'task_directories', :action => 'index'
+    else
+      redirect_to '/auth/facebook'
     end
   end
   

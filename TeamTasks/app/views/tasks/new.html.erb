@@ -7,9 +7,9 @@
 	</p>
 	
 	<p>
-		<%= f.label :taskDate %><br />
-		<%= f.text_field :taskDate %>
-	</p>
+	    <%= f.label 'Deadline' %><br>
+	    <%= date_select("task", "taskDate", :order => [:day, :month, :year]) %>
+ 	</p>
 	
 	<p>
 		<%= f.label :taskContent %><br />
@@ -17,9 +17,10 @@
 	</p>
  	
  	<p>
-		<%= f.label :taskCompleted %><br />
-		<%= f.text_field :taskCompleted %>
+	  	<%= label_tag(:taskCompleted, "Task completed") %>
+	    <%= check_box("task", "taskCompleted") %>
 	</p>
+	
 	<p>
 		<%= f.hidden_field :directoryID, :value => params[:id] %>
 		<%= f.submit %>

@@ -6,9 +6,10 @@ TeamTasks::Application.routes.draw do
   resources :task_directories
 
   resources :users
-
-  get "home/index"
-  root "home#index"
+  get "task_directories/index"
+  root "task_directories#index"
+  
+  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
