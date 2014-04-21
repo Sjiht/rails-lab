@@ -1,0 +1,31 @@
+<%= link_to 'back', task_directories_path %>
+<h1>Listing posts</h1>
+<table>
+	<tr>
+		<th>Username</th>
+		<th>Completed</th>
+	</tr>
+  
+	<% @directoryUsers.each do |d| %>
+			<tr>
+				<td><%= d.userID %></td> 
+				<td></td>
+				<td></td>
+			</tr>	
+	<% end %>
+</table>
+
+
+
+
+<%= form_for :taskDirectoryUser, url: task_directory_users_path do |f| %>
+	<p>
+		<%= f.label :userID %><br />
+		<%= f.text_field :userID %>
+	</p>
+	
+	<p>
+		<%= f.hidden_field :directoryID, :value => params[:id] %>
+		<%= f.submit %>
+	</p>
+<% end %>

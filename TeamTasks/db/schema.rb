@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420145901) do
+ActiveRecord::Schema.define(version: 20140421093939) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140420145901) do
   end
 
   create_table "task_directory_users", force: true do |t|
-    t.integer  "facebookID"
+    t.integer  "userID"
     t.integer  "directoryID"
     t.datetime "created_at"
     t.datetime "updated_at"

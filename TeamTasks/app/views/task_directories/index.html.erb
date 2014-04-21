@@ -20,7 +20,7 @@
                     method: :delete, data: { confirm: 'Weet je het zeker? Alle taken worden ook verwijderd!' } %></td>
                 
                 <td></td>
-                <td><%= link_to 'Gebruikers toevoegen', task_directory_users_path %></td>
+                <td><%= link_to 'Gebruikers toevoegen', :controller => 'task_directory_users', :action => 'new', :id => d.id %></td>
 			</tr>			
 		<% @tasks.where(:directoryID => d.id).each do |t| %>
 			<tr>
