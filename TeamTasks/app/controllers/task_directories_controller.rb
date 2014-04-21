@@ -4,7 +4,7 @@ class TaskDirectoriesController < ApplicationController
       @directories = TaskDirectory.where(:userID => session[:user_id])
       @tasks = Task
     else
-      redirect_to '/auth/facebook'
+      redirect_to :controller => 'login', :action => 'index'
     end
   end
   
@@ -14,7 +14,7 @@ class TaskDirectoriesController < ApplicationController
       @directory.save
       redirect_to :action => 'index'
     else
-       redirect_to '/auth/facebook'
+       redirect_to :action => 'login'
     end
   end
  
@@ -24,10 +24,10 @@ class TaskDirectoriesController < ApplicationController
       @directory.destroy
       redirect_to :action => 'index'
     else
-      redirect_to '/auth/facebook'
+      redirect_to :action => 'login'
     end
   end
-  
+
   private
     def taskDirectory_params
       params.require(:taskDirectory).permit(:userID, :directoryName)

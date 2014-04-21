@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if current_user %>
+  Logged in as <%=current_user[:name]%>
+  <%= link_to 'logout','/auth/logout' %>
+<% else %>
+  <%= link_to 'login with facebook','/auth/facebook' %>
+<% end %>
 <%= yield %>
 
 </body>

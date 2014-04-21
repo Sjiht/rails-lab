@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    
+    #
   end
   
   def create
@@ -9,7 +9,7 @@ class TasksController < ApplicationController
       @task.save
       redirect_to :controller => 'task_directories', :action => 'index'
     else
-      redirect_to '/auth/facebook'
+      redirect_to :action => 'login'
     end
   end
   
@@ -17,9 +17,9 @@ class TasksController < ApplicationController
     if session[:user_id]
       taskdirectoryID = Task.find(params[:id]).directoryID
       directory = TaskDirectory.where(:id => taskdirectoryID).where(:userID => session[:user_id]).first
-      @task = Task.where(:directoryID => directory.id).first
+      @task = Task.where(:directoryID => directory.id).where(:id => params[:id]).first
     else
-      redirect_to '/auth/facebook'
+      redirect_to :action => 'login'
     end
     
     #if @directory.directoryID == @taskid.directoryID
@@ -33,7 +33,7 @@ class TasksController < ApplicationController
     if session[:user_id]
       @task = Task.find(params[:id])
     else
-      redirect_to '/auth/facebook'
+      redirect_to :action => 'login'
     end  
   end
   
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
         render 'edit'
       end
     else
-      redirect_to '/auth/facebook'
+      redirect_to :action => 'login'
     end
   end
   
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
       @task.destroy
       redirect_to :controller => 'task_directories', :action => 'index'
     else
-      redirect_to '/auth/facebook'
+      redirect_to :action => 'login'
     end
   end
   
