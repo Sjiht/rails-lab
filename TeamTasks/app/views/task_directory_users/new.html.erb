@@ -2,12 +2,12 @@
 <h1>Gebruikers</h1>
 <table>
 	<tr>
-		<th>Username</th>
+		<th>Current added users</th>
 	</tr>
   
 	<% @directoryUsers.each do |d| %>
 			<tr>
-				<td><%= d.userID %></td> 
+				<td><%= @users.find(d.userID).name %></td> 
 				<td></td>
 				<td></td>
 			</tr>	

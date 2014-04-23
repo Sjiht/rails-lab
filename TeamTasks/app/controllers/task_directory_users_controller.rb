@@ -5,6 +5,7 @@ class TaskDirectoryUsersController < ApplicationController
   
   def new
     @directoryUsers = TaskDirectoryUser.where(:directoryID => params[:id])
+    @users = User.all
   end
   def create
     if session[:user_id]
