@@ -1,13 +1,26 @@
 class TaskDirectoriesController < ApplicationController
   def index
     if session[:user_id]
-      #@directories = TaskDirectory.where(:userID => session[:user_id])
+      @directories = TaskDirectory.where(:userID => session[:user_id])
+      @extradirnumbers= TaskDirectoryUser.where(:userID => session[:user_id])
+      @dirnumbersarray = []
+      @extraDirectories = []
+      @extradirnumbers.each do |d|
+        @dirnumbersarray << d.directoryID
+      end
+      @dirnumbersarray.each do |id|
+          begin
+            @extraDirectories << TaskDirectory.find(id)
+          rescue
+            @extraDirectories = @extraDirectories
+          end
+      end
       #@directories = TaskDirectory.joins(:taskDirectoryUsers).where('task_directories.userID = (?) OR task_directory_users.userID = (?)', session[:user_id], session[:user_id])
      # @directories = TaskDirectory.find_by_sql('SELECT * FROM "task_directories" WHERE "userID" = 5 )
-      @directories = TaskDirectory
-      .joins('LEFT JOIN task_directory_users ON task_directory_users.userID = task_directories.userID')
-      .where('task_directories.userID = (?) AND task_directory_users.userID = (?)', session[:user_id], session[:user_id])
-      .select('task_directories.*')
+      #@directories = TaskDirectory
+      #.joins('LEFT JOIN task_directory_users ON task_directory_users.userID = task_directories.userID')
+      #.where('task_directories.userID = (?) OR task_directory_users.userID = (?)', session[:user_id], session[:user_id])
+      #.select('task_directories.*')
       @tasks = Task
     else
       redirect_to :controller => 'login', :action => 'index'

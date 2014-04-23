@@ -1,6 +1,7 @@
-<h1>Listing posts</h1>
+<h1>Eigen directories</h1>
 <%= link_to "Nieuwe directory", action: "new" %>
 <%= render :text => @current_user %>
+
 <table>
 	<tr>
 		<th>Titel</th>
@@ -11,6 +12,50 @@
 	</tr>
   
 	<% @directories.each do |d| %>
+			<tr>
+				<td><%= d.directoryName %></td> 
+				<td></td>
+				<td></td>
+				<td><%= link_to "Nieuwe taak", :controller => 'tasks', :action => 'new', :id => d.id %></td>
+				<td><%= link_to 'Verwijder directory', task_directory_path(d),
+                    method: :delete, data: { confirm: 'Weet je het zeker? Alle taken worden ook verwijderd!' } %></td>
+                
+                <td></td>
+                <td><%= link_to 'Gebruikers toevoegen', :controller => 'task_directory_users', :action => 'new', :id => d.id %></td>
+			</tr>			
+		<% @tasks.where(:directoryID => d.id).each do |t| %>
+			<tr>
+				<td><%= link_to t.taskName, :controller => 'tasks', :action => 'show', :id => t.id %></td>
+				<td><%= if t.taskCompleted == true
+							render :text => 'Klaar'
+						else
+							render :text => 'Niet klaar' 
+						end %></td>
+				<td><%= render :text => t.taskDate%></td>
+				<td><%= link_to 'Edit', :controller => 'tasks', :action => 'edit', :id => t.id %></td>
+                <td><%= link_to "Delete", {:controller => "tasks", 
+                	:action => 'destroy', :id => t.id}, 
+                	:confirm => "Weet je het zeker?", :method => :delete %></td>
+                <td></td>
+				
+			</tr>
+		<% end %>
+	<% end %>
+</table>
+
+<h1>Gedeelde directories</h1>
+
+
+<table>
+	<tr>
+		<th>Titel</th>
+		<th>Completed</th>
+		<th>Deadline</th>
+		<th>Opties</th>
+		<th>Verwijderen</th>
+	</tr>
+  
+	<% @extraDirectories.each do |d| %>
 			<tr>
 				<td><%= d.directoryName %></td> 
 				<td></td>
