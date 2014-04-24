@@ -13,4 +13,97 @@
  *= require_self
  *= require_tree .
  */
+html {
+	font-family:Arial, "Times New Roman", Times, serif;
+	font-size:1em;
+	text-decoration:none;
+}
+a {
+	text-decoration:none;
+	color:blue;
+}
 
+h1 {
+	margin-left:10px;
+	float:left;
+}
+
+#listUsers .users td {
+	border-top:5px solid #e1fbff;
+	background-color:#3276fb;
+	padding:10px;
+	color:white;
+	font-weight:bold;
+}
+#listUsers {
+	clear:left;
+	background-color:#e1fbff;
+	border:3px solid #000;
+	border-radius:10px;
+	margin-bottom:10px;
+	padding:10px;
+	width:30%;
+}
+#listUsers .userItem table,tr {
+	background-color:#8cecfb;
+}
+#listUsers .userItem table,tr:hover {
+	background-color:#ffe9ec;
+}
+#listUsers .userItem td {
+	padding:7px;
+}
+#listUsers .image {
+	width:30px;
+}
+#listUsers .userItem td:first-child {
+	padding-left:25px;
+}
+#list {
+	background-color:#e1fbff;
+	border:3px solid #000;
+	border-radius:10px;
+	margin-bottom:10px;
+}
+#list table {
+	width:100%;
+	border-spacing:0px;
+	padding:0px 4px 5px 5px;
+}
+
+#list .addDirectory {
+	float:right;
+	width:30px;
+	margin-top:20px;
+	border-spacing:0px;
+	padding:0px 25px 5px 5px;
+}
+
+#list .directory td {
+	border-top:5px solid #e1fbff;
+	background-color:#3276fb;
+	padding:10px;
+	color:white;
+	font-weight:bold;
+}
+#list .addDirectory td {
+	padding:10px;
+	color:white;
+	font-weight:bold;
+	background-color:#e1fbff;
+}
+#list .task table,tr {
+	background-color:#8cecfb;
+}
+#list .task table,tr:hover {
+	background-color:#ffe9ec;
+}
+#list .task td {
+	padding:7px;
+}
+#list .image {
+	width:30px;
+}
+#list .task td:first-child {
+	padding-left:25px;
+}

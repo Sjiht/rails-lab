@@ -34,8 +34,10 @@ class TaskDirectoriesController < ApplicationController
  
   def destroy
     if session[:user_id]
-      @directory = TaskDirectory.find(params[:id])
-      @directory.destroy
+      directory = TaskDirectory.find(params[:id])
+      directory.destroy
+      tasks = Task.where(:directoryID => params[:id])
+      tasks.destroy_all
       redirect_to :action => 'index'
     else
       redirect_to :action => 'login'

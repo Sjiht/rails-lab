@@ -1,30 +1,31 @@
-<%= link_to 'back', task_directories_path %>
 <h1>Gebruikers</h1>
-<table>
-	<tr>
-		<th>Current added users</th>
-	</tr>
-  
-	<% @directoryUsers.each do |d| %>
-			<tr>
-				<td><%= @users.find(d.userID).name %></td> 
-				<td></td>
-				<td></td>
-			</tr>	
-	<% end %>
-</table>
-
-
-
-
-<%= form_for :taskDirectoryUser, url: task_directory_users_path do |f| %>
-	<p>
-		<%= f.label :userID %><br />
-		<%= f.text_field :userID %>
-	</p>
+<br />
+<div id="listUsers">
+	<table>
+		<tr class = "users">
+			<td>Current added users</td>
+			<td></td>
+		</tr>
+	  
+		<% @directoryUsers.each do |d| %>
+				<tr class="userItem">
+					<td><%= @users.find(d.userID).name %></td> 
+					<td><%= link_to link_to image_tag("https://cdn3.iconfinder.com/data/icons/meanicons-4/512/meanicons_24-512.png", :size => "20x20"), task_directory_user_path(d),
+	                    method: :delete, data: { confirm: 'Weet je het zeker?' }   %></td>
+				</tr>	
+		<% end %>
+	</table>
 	
-	<p>
-		<%= f.hidden_field :directoryID, :value => params[:id] %>
-		<%= f.submit %>
-	</p>
-<% end %>
+	<%= form_for :taskDirectoryUser, url: task_directory_users_path do |f| %>
+		<p>
+			<%= f.label :name %><br />
+			<%= f.text_field :name %>
+		</p>
+		
+		<p>
+			<%= f.hidden_field :directoryID, :value => params[:id] %>
+			<%= f.submit :Toevoegen %>
+		</p>
+	<% end %>
+</div>
+<%= link_to 'back', task_directories_path %>

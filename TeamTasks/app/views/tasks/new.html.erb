@@ -1,28 +1,31 @@
-<h1>New Post</h1>
-
-<%= form_for :task, url: tasks_path do |f| %>
-	<p>
-		<%= f.label :taskName %><br />
-		<%= f.text_field :taskName %>
-	</p>
-	
-	<p>
-	    <%= f.label 'Deadline' %><br>
-	    <%= date_select("task", "taskDate", :order => [:day, :month, :year]) %>
- 	</p>
-	
-	<p>
-		<%= f.label :taskContent %><br />
-		<%= f.text_area :taskContent, :cols => 70, :rows => 10 %>
-	</p>
- 	
- 	<p>
-	  	<%= label_tag(:taskCompleted, "Task completed") %>
-	    <%= check_box("task", "taskCompleted") %>
-	</p>
-	
-	<p>
-		<%= f.hidden_field :directoryID, :value => params[:id] %>
-		<%= f.submit %>
-	</p>
-<% end %>
+<div id="listUsers">
+	<h1>New Post</h1>
+	<br /><br /><br /><br />
+	<%= form_for :task, url: tasks_path do |f| %>
+		<p>
+			<%= f.label :naam %><br />
+			<%= f.text_field :taskName %>
+		</p>
+		
+		<p>
+		    <%= f.label 'Deadline' %><br>
+		    <%= date_select("task", "taskDate", :order => [:day, :month, :year]) %>
+	 	</p>
+		
+		<p>
+			<%= f.label :beschrijving %><br />
+			<%= f.text_area :taskContent, :cols => 38, :rows => 10 %>
+		</p>
+	 	
+	 	<p>
+		  	<%= label_tag(:taskCompleted, "Taak volbracht") %>
+		    <%= check_box("task", "taskCompleted") %>
+		</p>
+		
+		<p>
+			<%= f.hidden_field :directoryID, :value => params[:id] %>
+			<%= f.submit :Opslaan %>
+		</p>
+	<% end %>
+</div>
+<%= link_to 'Back', task_directories_path %>

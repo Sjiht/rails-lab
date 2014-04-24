@@ -5,15 +5,20 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
 </head>
 <body>
-<% if current_user %>
-  Logged in as <%=current_user[:name]%>
-  <%= link_to 'logout','/auth/logout' %>
-<% else %>
-  <%= link_to 'login with facebook','/auth/facebook' %>
-<% end %>
-<%= yield %>
+	<div id = "header">
+		<% if current_user %>
+		  Logged in as <%=current_user[:name]%>
+		  <%= link_to 'logout','/auth/logout' %>
+		<% else %>
+		  <%= link_to 'login with facebook','/auth/facebook' %>
+		<% end %>
+	</div>
+	
+	<%= yield %>
+	
 
 </body>
 </html>

@@ -1,88 +1,69 @@
-<h1>Eigen directories</h1>
-<%= link_to "Nieuwe directory", action: "new" %>
-<%= render :text => @current_user %>
-
-<table>
-	<tr>
-		<th>Titel</th>
-		<th>Completed</th>
-		<th>Deadline</th>
-		<th>Opties</th>
-		<th>Verwijderen</th>
-	</tr>
-  
-	<% @directories.each do |d| %>
-			<tr>
-				<td><%= d.directoryName %></td> 
-				<td></td>
-				<td></td>
-				<td><%= link_to "Nieuwe taak", :controller => 'tasks', :action => 'new', :id => d.id %></td>
-				<td><%= link_to 'Verwijder directory', task_directory_path(d),
-                    method: :delete, data: { confirm: 'Weet je het zeker? Alle taken worden ook verwijderd!' } %></td>
-                
-                <td></td>
-                <td><%= link_to 'Gebruikers toevoegen', :controller => 'task_directory_users', :action => 'new', :id => d.id %></td>
-			</tr>			
-		<% @tasks.where(:directoryID => d.id).each do |t| %>
-			<tr>
-				<td><%= link_to t.taskName, :controller => 'tasks', :action => 'show', :id => t.id %></td>
-				<td><%= if t.taskCompleted == true
-							render :text => 'Klaar'
-						else
-							render :text => 'Niet klaar' 
-						end %></td>
-				<td><%= render :text => t.taskDate%></td>
-				<td><%= link_to 'Edit', :controller => 'tasks', :action => 'edit', :id => t.id %></td>
-                <td><%= link_to "Delete", {:controller => "tasks", 
-                	:action => 'destroy', :id => t.id}, 
-                	:confirm => "Weet je het zeker?", :method => :delete %></td>
-                <td></td>
-				
-			</tr>
+<br />
+<div id="list">
+	<%= render :text => @current_user %>
+	<h1>Eigen directories</h1>
+	<%= link_to image_tag("http://icons.iconseeker.com/png/fullsize/agua-onyx-folders/new-folder-9.png", :size => "40x40", :class => "addDirectory"), action: "new"%>
+	<table>
+	  
+		<% @directories.each do |d| %>
+				<tr class="directory">
+					<td><%= d.directoryName %></td>
+					<td class="image"><%= link_to image_tag("http://png-1.findicons.com/files/icons/2315/default_icon/256/add.png", :size => "30x30"), :controller => 'tasks', :action => 'new', :id => d.id %></td>
+					<td class="image"><%= link_to image_tag("http://www.iconsdb.com/icons/download/black/delete-256.png", :size => "30x30"), task_directory_path(d),
+	                    method: :delete, data: { confirm: 'Weet je het zeker? Alle taken worden ook verwijderd!' } %></td>
+	                <td class="image"><%= link_to image_tag("http://download.pdkwebs.nl/img/mprog/uye.png", :size => "30x30"), :controller => 'task_directory_users', :action => 'new', :id => d.id %></td>
+				</tr>	
+			</table>
+			<table>		
+			<% @tasks.where(:directoryID => d.id).each do |t| %>
+				<tr class = "task">
+					<td><%= link_to t.taskName, :controller => 'tasks', :action => 'show', :id => t.id %></td>
+					<td><%= if t.taskCompleted == true
+								render :text => 'Klaar'
+							else
+								render :text => 'Niet klaar' 
+							end %></td>
+					<td><%= render :text => t.taskDate%></td>
+					<td class="image"><%= link_to image_tag("https://cdn2.iconfinder.com/data/icons/picol-vector/32/edit-128.png", :size => "20x20"), :controller => 'tasks', :action => 'edit', :id => t.id %></td>
+	                <td class="image"><%= link_to image_tag("https://cdn3.iconfinder.com/data/icons/meanicons-4/512/meanicons_24-512.png", :size => "20x20"), {:controller => "tasks", 
+	                	:action => 'destroy', :id => t.id}, 
+	                	:confirm => "Weet je het zeker?", :method => :delete %></td>					
+				</tr>
+			<% end %>
 		<% end %>
-	<% end %>
-</table>
-
-<h1>Gedeelde directories</h1>
-
-
-<table>
-	<tr>
-		<th>Titel</th>
-		<th>Completed</th>
-		<th>Deadline</th>
-		<th>Opties</th>
-		<th>Verwijderen</th>
-	</tr>
-  
-	<% @extraDirectories.each do |d| %>
-			<tr>
-				<td><%= d.directoryName %></td> 
-				<td></td>
-				<td></td>
-				<td><%= link_to "Nieuwe taak", :controller => 'tasks', :action => 'new', :id => d.id %></td>
-				<td><%= link_to 'Verwijder directory', task_directory_path(d),
-                    method: :delete, data: { confirm: 'Weet je het zeker? Alle taken worden ook verwijderd!' } %></td>
-                
-                <td></td>
-                <td><%= link_to 'Gebruikers toevoegen', :controller => 'task_directory_users', :action => 'new', :id => d.id %></td>
-			</tr>			
-		<% @tasks.where(:directoryID => d.id).each do |t| %>
-			<tr>
-				<td><%= link_to t.taskName, :controller => 'tasks', :action => 'show', :id => t.id %></td>
-				<td><%= if t.taskCompleted == true
-							render :text => 'Klaar'
-						else
-							render :text => 'Niet klaar' 
-						end %></td>
-				<td><%= render :text => t.taskDate%></td>
-				<td><%= link_to 'Edit', :controller => 'tasks', :action => 'edit', :id => t.id %></td>
-                <td><%= link_to "Delete", {:controller => "tasks", 
-                	:action => 'destroy', :id => t.id}, 
-                	:confirm => "Weet je het zeker?", :method => :delete %></td>
-                <td></td>
-				
-			</tr>
+	</table>
+	</div>
+	<div id="list">
+	<h1>Gedeelde directories</h1>
+	
+	
+	<table>
+	  
+		<% @extraDirectories.each do |d| %>
+				<tr class = "directory">
+					<td><%= d.directoryName %></td>
+					<td class="image"><%= link_to image_tag("http://png-1.findicons.com/files/icons/2315/default_icon/256/add.png", :size => "30x30"), :controller => 'tasks', :action => 'new', :id => d.id %></td>
+					<td class="image"><%= link_to image_tag("http://www.iconsdb.com/icons/download/black/delete-256.png", :size => "30x30"), task_directory_path(d),
+	                    method: :delete, data: { confirm: 'Weet je het zeker? Alle taken worden ook verwijderd!' } %></td>
+	                <td class="image"><%= link_to image_tag("http://download.pdkwebs.nl/img/mprog/uye.png", :size => "30x30"), :controller => 'task_directory_users', :action => 'new', :id => d.id %></td>
+				</tr>
+			</table>	
+			<table>
+			<% @tasks.where(:directoryID => d.id).each do |t| %>
+				<tr class = "task">
+					<td><%= link_to t.taskName, :controller => 'tasks', :action => 'show', :id => t.id %></td>
+					<td><%= if t.taskCompleted == true
+								render :text => 'Klaar'
+							else
+								render :text => 'Niet klaar' 
+							end %></td>
+					<td><%= render :text => t.taskDate%></td>
+					<td class="image"><%= link_to image_tag("https://cdn2.iconfinder.com/data/icons/picol-vector/32/edit-128.png", :size => "20x20"), :controller => 'tasks', :action => 'edit', :id => t.id %></td>
+	                <td class="image"><%= link_to image_tag("https://cdn3.iconfinder.com/data/icons/meanicons-4/512/meanicons_24-512.png", :size => "20x20"), {:controller => "tasks", 
+	                	:action => 'destroy', :id => t.id}, 
+	                	:confirm => "Weet je het zeker?", :method => :delete %></td>
+				</tr>
+			<% end %>
 		<% end %>
-	<% end %>
-</table>
+	</table>
+</div>

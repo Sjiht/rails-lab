@@ -1,16 +1,16 @@
-<table>
-	<tr>
-		<td>
-			<%= link_to "Wijzig taak", :controller => 'tasks', :action => 'edit', :id => params[:id] %>
-		</td>
-	</tr>
-	<tr>
-		<th>Titel</th>
-		<th>Content</th>
-	</tr>
-	<tr>
-		<td><%= @task.taskName %></td>
-		<td><%= @task.taskContent %></td>
-	</tr>
-</table>
+
+<div id="listUsers">
+	<table>
+		<tr class="userItem">
+			<td>Naam</td>
+			<td>Beschrijving</td>
+			<td></td>
+		</tr>
+		<tr class="userItem">
+			<td><%= @task.taskName %></td>
+			<td><%= @task.taskContent %></td>
+			<td><%= link_to "Wijzig taak", :controller => 'tasks', :action => 'edit', :id => params[:id] %></td>
+		</tr>
+	</table>
+</div>
 <%= link_to 'Back', task_directories_path %>
