@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    
+    # remove the current users session when he wants to log out
     session[:user_id] = nil
     redirect_to :controller => 'login', :action => 'index'
   end
