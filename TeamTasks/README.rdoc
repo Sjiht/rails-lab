@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To run the app there are a few things that are required. 
+The first thing is to change the hosts file. The line that needs to be added is:
 
-Things you may want to cover:
+0.0.0.0		tasks.teamtasks.ga
 
-* Ruby version
+This makes sure to redirect the localhost path to a 'real' url to trick facebook in thinking it is a real website.
+To access the app, run: rails server
 
-* System dependencies
+Then the app can be viewed at:
 
-* Configuration
+http://tasks.teamtasks.ga:3000/
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+From there on the app works completely.
